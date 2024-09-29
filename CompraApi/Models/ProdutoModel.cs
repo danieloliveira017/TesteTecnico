@@ -15,6 +15,6 @@ namespace CompraApi.Models
         [Required]
         public decimal Preco {get; set;}
 
-        public List<CodicoesPagamaentoModel>? Condicoes {get; set;}
+        
     }
 }
