@@ -13,7 +13,5 @@ namespace CompraApi.Models
         public decimal ValorEntrada {get; set;}
         public int QtdeParcelas {get; set;}
 
-        public int ProdutoId {get; set;}
-        public ProdutoModel? Produto {get; set;}
     }
 }
