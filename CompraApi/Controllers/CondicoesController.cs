@@ -23,5 +23,30 @@ namespace CompraApi.Controllers
             var response = await _contextCondicoes.AddCondicoes(condicoes);
             return Ok(response);
         }
+        [HttpPost("compra")]
+    public async Task<ActionResult<ServiceResponse<List<CompraRequestDto>>>> AddCompra(CompraRequestDto compra){
+              if(compra == null || compra.CondicaoPagamento == null){
+                return BadRequest( new ServiceResponse<CompraRequestDto>
+                
+                {
+                    Sucesso =false,
+                    Mensagem = "O campo CondicaoPagamento é obrigatório.",
+                });
+                
+              }
+              var condicoes = new CodicoesPagamaentoModel
+              {
+              
+                ValorEntrada = compra.CondicaoPagamento.ValorEntrada,
+                QtdeParcelas = compra.CondicaoPagamento.QtdeParcelas
+              };
+              var response = await _contextCondicoes.AddCondicoes(condicoes);
+              return Ok(response);
     }
-}
+    
+    
+    }
+    }
+    
+        
+    

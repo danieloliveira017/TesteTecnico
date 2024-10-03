@@ -14,6 +14,9 @@ namespace CompraApi.Models
         public string Nome {get; set;} = string.Empty;
         [Required]
         public decimal Preco {get; set;}
+         public int QuantidadeEmEstoque { get; set; }
+
+    
 
         
     }
