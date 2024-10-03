@@ -9,6 +9,7 @@ namespace CompraApi.Models
     {
         public ProdutoModel? Produto {get; set;} 
         public CodicoesPagamaentoModel? CondicaoPagamento {get; set;}
+        public int Produtoid {get; set;}
 
     }
 }

@@ -10,6 +10,7 @@ namespace CompraApi.Models
     {
         [Key] 
         public int Id { get; set; }
+       
         public decimal ValorEntrada {get; set;}
         public int QtdeParcelas {get; set;}
 

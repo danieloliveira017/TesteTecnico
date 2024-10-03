@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DadosCompras>(options =>
 builder.Services.AddScoped<IProdutoInterface, ProdutoService>();
 builder.Services.AddScoped<ICondicoesInterface, CondicoesService>();
 
+
 // Adiciona os serviços de controladores
 builder.Services.AddControllers();
 

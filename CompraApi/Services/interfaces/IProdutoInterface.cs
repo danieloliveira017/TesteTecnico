@@ -13,5 +13,8 @@ namespace CompraApi.Services.interfaces
          Task<ServiceResponse<List<ProdutoModel>>> AddProduto(ProdutoModel produto);
          Task<ServiceResponse<List<ProdutoModel>>> UpdateProduto(ProdutoModel produto);
          Task<ServiceResponse<List<ProdutoModel>>> DeletProduto(int id);
+         Task<ServiceResponse<ProdutoModel>> AtualizarPrecoProduto(int id, decimal Newpreco);
+         Task<ServiceResponse<ProdutoModel>> CalcularDesconto(int id, decimal desconto);
+         Task<ServiceResponse<ProdutoModel>> VerificarEstoqueProduto(int id, int quantidades); 
     }
 }
