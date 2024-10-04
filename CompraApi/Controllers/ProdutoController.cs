@@ -41,6 +41,15 @@ namespace CompraApi.Controllers
             }
              return Ok(response);
         }
+         [HttpGet("{produtoId}/verificar-estoque")]
+        public async Task<ActionResult<ServiceResponse<bool>>> VerificarEstoque(int produtoId, int quantidadeRequerida)
+        {
+            var response = await _produtoService.VerificarEstoqueProduto(produtoId, quantidadeRequerida);
+            if (!response.Sucesso)
+                return NotFound(response);
+            return Ok(response);
+        }
+
 
     }
 }
