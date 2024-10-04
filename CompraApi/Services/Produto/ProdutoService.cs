@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CompraApi.Data;
 using CompraApi.Models;
 using CompraApi.Services.interfaces;
+using Microsoft.AspNetCore.Routing.Tree;
 
 namespace CompraApi.Services.Produto
 {
@@ -112,9 +113,29 @@ namespace CompraApi.Services.Produto
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<ProdutoModel>> VerificarEstoqueProduto(int id, int quantidades)
+        public async Task<ServiceResponse<ProdutoModel>> VerificarEstoqueProduto(int id, int quantidades)
         {
-            throw new NotImplementedException();
+            var response = new ServiceResponse<ProdutoModel>();
+            var produto = await _contextProduto.Produtos.FindAsync(id);
+            try{
+                if(produto == null){
+                    response.Sucesso = false;
+                    response.Mensagem = "Produto não encontrado";
+                    return response;
+                }
+
+                
+               var estoqueDisponivel = produto.QuantidadeEmEstoque >= quantidades;
+            
+               response.Dados = produto;
+               response.Sucesso = true;
+               response.Mensagem = estoqueDisponivel ? "Quantidade do estoque suficiente": "Quantidade em estoque insuficiente";
+
+            }catch(Exception ex){
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
+            }
+            return response;
         }
     }
 }
